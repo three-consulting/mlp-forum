@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if user.username %}
+<ul>
+    <li class="user_action">
+        <a href="/new-post">New post</a>
+    </li>
+    <li class="user_action">
+        <a href="/change_password">Change password</a>
+    </li>
+    <li class="user_action">
+        <a href="/logout">Logout</a>
+    </li>
+</ul>
+{% else %}
+<ul>
+    <li>
+        <a href="/login">Log in to post</a>
+    </li>
+</ul>
+{% endif %}
+<h2>Links</h2>
+<ul>
+    {% for post in object_list %}
+        <li>
+            <a href="{{ post.url }}"><h3>{{ post.title }}</h3></a>
+            <ul>
+                <li>{{ post.created_by.username }} - {{ post.created_at }}</li>
+                <li><a href="discuss/{{ post.pk }}">Discuss</a></li>
+                {% if user.id == post.created_by.id or user.is_staff %}
+                    <li><a href="delete-post/{{ post.pk }}">Delete</a></li>
+                {% endif %}
+            </ul>
+        </li>
+    {% empty %}
+        No links yet.
+    {% endfor %}
+</ul>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">more</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}
