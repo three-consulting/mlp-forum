@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% load humanize %}
+
 {% if user.username %}
 <ul>
     <li class="user_action">
@@ -27,11 +29,13 @@
         <li>
             <a href="{{ post.url }}"><h3>{{ post.title }}</h3></a>
             <ul>
-                <li>{{ post.created_by.username }} - {{ post.created_at }}</li>
-                <li><a href="discuss/{{ post.pk }}">Discuss</a></li>
-                {% if user.id == post.created_by.id or user.is_staff %}
-                    <li><a href="delete-post/{{ post.pk }}">Delete</a></li>
-                {% endif %}
+                <li>
+                    By {{ post.created_by.username }} {{ post.created_at|naturaltime }}
+                    - <a href="discuss/{{ post.pk }}">Discuss</a>
+                    {% if user.id == post.created_by.id or user.is_staff %}
+                        - <a href="delete-post/{{ post.pk }}">Delete</a>
+                    {% endif %}
+                </li>
             </ul>
         </li>
     {% empty %}

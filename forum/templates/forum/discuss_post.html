@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 
+{% load humanize %}
+
 {% block content %}
 
 <a href="{{ post.url }}"><h1>{{ post.title }}</h1></a>
 <ul>
     {% for comment in comments %}
         <li>
-            <p>{{ comment.content }}</p>
+            <p>{{ comment.content|linebreaks }}</p>
                 {% if comment.edited %}
                     <p><i>(Comment was edited by {{ comment.updated_by }} at {{ comment.updated_at }})</i></p>
                 {% endif %}
             <ul>
                 <li>{{ comment.created_by.username }} -
-                    {{ comment.created_at }}
+                    {{ comment.created_at|naturaltime }}
                     {% if user.id == comment.created_by.id or user.is_staff %} -
                         <a href="/edit_comment/{{ comment.pk }}">Edit</a> -
                         <a href="/delete_comment/{{ comment.pk }}">Delete</a>
@@ -26,6 +28,17 @@
     </p>
     {% endfor %}
 </li>
-<input type="submit" value="Comment" onclick="location.href = '/new_comment/{{ post.pk }}';" style="margin-top: 20px">
+{% if user.username %}
+    <a href="/new_comment/{{ post.pk }}">
+        <input id="new_comment_button" type="submit" value="Comment">
+    </a>
+{% else %}
+    <div id="comment_login_prompt">
+        <a href="/login">
+            Log in to comment.
+        </a>
+    </div>
+{% endif %}
+
 
 {% endblock %}
