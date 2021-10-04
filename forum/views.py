@@ -71,6 +71,12 @@ class UpdateCommentView(UpdateView):
     model = Comment
     fields = ['content']
 
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.created_by != self.request.user and not self.request.user.is_staff:
+            raise PermissionDenied
+        return super(UpdateCommentView, self).dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         form.instance.updated_by = self.request.user
         form.instance.edited = True
