@@ -25,7 +25,7 @@
         </div>
         <div class="header_block">
             {% if user.username %}
-                    <span class="user_action">Logged in as {{ user.username }}</span>
+                    <span class="user_action">{{ user.username }}</span>
                     <span class="user_action"><a href="/submit">Submit</a></span>
                     <span class="user_action"><a href="/change_password">Change password</a></span>
                     <span class="user_action"><a href="/logout">Logout</a></span>
