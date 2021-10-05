@@ -2,9 +2,17 @@ body {
 	font-family: monospace;
 }
 
+.user_action > a {
+	text-decoration: none;
+	font-weight: 600;
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 11px;
+}
+
 .user_action {
-	margin-bottom: 20px;
-	margin-top: 20px;
+	margin-left: 20px;
+	align-self: flex-end;
 }
 
 #no_comments {
@@ -31,4 +39,33 @@ body {
 
 #discuss_post_title {
 	font-size: 1.5em;
+	margin-bottom: 30px;
+}
+
+#logo{
+	text-decoration: none;
+	font-weight: 400;
+	color: white;
+	font-size: 12px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#logo_container {
+	display: inline-block;
+	background: black;
+	padding: 10px;
+}
+
+#header {
+	display: flex;
+	margin-bottom: 30px;
+}
+
+.header_block {
+	display: flex;
+	float: left;
+}
+
+.submit_button {
+	margin-top: 20px;
 }

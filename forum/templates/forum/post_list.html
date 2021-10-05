@@ -4,25 +4,6 @@
 
 {% load humanize %}
 
-{% if user.username %}
-<ul>
-    <li class="user_action">
-        <a href="/new-post">New post</a>
-    </li>
-    <li class="user_action">
-        <a href="/change_password">Change password</a>
-    </li>
-    <li class="user_action">
-        <a href="/logout">Logout</a>
-    </li>
-</ul>
-{% else %}
-<ul>
-    <li>
-        <a href="/login">Log in to post</a>
-    </li>
-</ul>
-{% endif %}
 <h2>Links</h2>
 <ul>
     {% for post in object_list %}
@@ -32,7 +13,7 @@
                 By {{ post.created_by.username }} {{ post.created_at|naturaltime }}
                 - <a href="discuss/{{ post.pk }}">Discuss{% if post.comment_parent.count > 0 %} ({{ post.comment_parent.count }}){% endif %}</a>
                 {% if user.id == post.created_by.id or user.is_staff %}
-                    - <a href="delete-post/{{ post.pk }}">Delete</a>
+                    - <a href="delete_post/{{ post.pk }}">Delete</a>
                 {% endif %}
             </div>
         </li>
