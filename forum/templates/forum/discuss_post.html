@@ -4,30 +4,7 @@
 
 {% block content %}
 
-<a href="{{ post.url }}"><h1>{{ post.title }}</h1></a>
-<ul>
-    {% for comment in comments %}
-        <li>
-            <p>{{ comment.content|linebreaks }}</p>
-                {% if comment.edited %}
-                    <p><i>(Comment was edited by {{ comment.updated_by }} at {{ comment.updated_at }})</i></p>
-                {% endif %}
-            <ul>
-                <li>{{ comment.created_by.username }} -
-                    {{ comment.created_at|naturaltime }}
-                    {% if user.id == comment.created_by.id or user.is_staff %} -
-                        <a href="/edit_comment/{{ comment.pk }}">Edit</a> -
-                        <a href="/delete_comment/{{ comment.pk }}">Delete</a>
-                    {% endif %}
-                </li>
-            </ul>
-        </li>
-    {% empty %}
-	<p>
-        No comments yet.
-    </p>
-    {% endfor %}
-</li>
+<a href="{{ post.url }}"><h1 id="discuss_post_title">{{ post.title }}</h1></a>
 {% if user.username %}
     <a href="/new_comment/{{ post.pk }}">
         <input id="new_comment_button" type="submit" value="Comment">
@@ -39,6 +16,24 @@
         </a>
     </div>
 {% endif %}
-
+{% for comment in comments %}
+    <div class="comment">
+        {{ comment.content|linebreaks }}
+        <div class="block_footer">
+            {% if comment.edited %}
+                <p>
+                    Edited by {{ comment.updated_by }} {{ comment.updated_at|naturaltime }}
+                </p>
+            {% endif %}
+            {{ comment.created_by.username }} -
+            {{ comment.created_at|naturaltime }}
+            {% if user.id == comment.created_by.id or user.is_staff %} -
+                <a href="/edit_comment/{{ comment.pk }}">Edit</a> -
+                <a href="/delete_comment/{{ comment.pk }}">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+</li>
 
 {% endblock %}
