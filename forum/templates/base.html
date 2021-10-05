@@ -6,12 +6,36 @@
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <title>{% block title %}Master League Pitching{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div id="header">
+        <div class="header_block">
+            <a href="/">
+            <div id="logo_container">
+                <span id="logo" href="/">
+                    Master<br>
+                    League<br>
+                    Pitching;
+                </span>
+            </div></a>
+        </div>
+        <div class="header_block">
+            {% if user.username %}
+                    <span class="user_action">Logged in as {{ user.username }}</span>
+                    <span class="user_action"><a href="/submit">Submit</a></span>
+                    <span class="user_action"><a href="/change_password">Change password</a></span>
+                    <span class="user_action"><a href="/logout">Logout</a></span>
+            {% else %}
+                    <span class="user_action"><a href="/login">Log in</a></span>
+            {% endif %}
+        </div>
+    </div>
     <div id="content">
-	    <a href="/">Master League Pitching</a>
-            {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
     </div>
 </body>
 </html>

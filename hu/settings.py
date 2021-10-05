@@ -138,9 +138,9 @@ LOGOUT_REDIRECT_URL = "/"
 
 # Strict CSP
 CSP_DEFAULT_SRC = ("'none'",)
-CSP_STYLE_SRC = ("'self'",)
+CSP_STYLE_SRC = ("'self'", "https://fonts.googleapis.com/")
 CSP_SCRIPT_SRC = ("'self'",)
-CSP_FONT_SRC = ("'self'",)
+CSP_FONT_SRC = ("'self'", "https://fonts.gstatic.com/")
 CSP_IMG_SRC = ("'self'",)
 
 # Strict permissions policy
