@@ -1,6 +1,5 @@
 body {
 	font-family: monospace;
-	max-width: 800px;
 }
 
 .user_action {
@@ -8,10 +7,28 @@ body {
 	margin-top: 20px;
 }
 
-#new_comment_button {
-	margin-top: 20px;
+#no_comments {
+	margin-bottom: 40px;
+	margin-top: 40px;
 }
 
-#comment_login_prompt {
+.comment{
 	margin-top: 20px;
+	border-left: solid;
+	border-width: 1px;
+	padding-left: 10px;
+	margin-bottom: 30px;
+}
+
+.block_footer{
+	font-size: 10px;
+	font-weight: 600;
+}
+
+.post_link{
+	margin-bottom: 0;
+}
+
+#discuss_post_title {
+	font-size: 1.5em;
 }
