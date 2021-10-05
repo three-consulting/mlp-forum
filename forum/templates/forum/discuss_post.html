@@ -9,12 +9,6 @@
     <a href="/new_comment/{{ post.pk }}">
         <input id="new_comment_button" type="submit" value="Comment">
     </a>
-{% else %}
-    <div id="comment_login_prompt">
-        <a href="/login">
-            Log in to comment.
-        </a>
-    </div>
 {% endif %}
 {% for comment in comments %}
     <div class="comment">
