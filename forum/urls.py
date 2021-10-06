@@ -12,5 +12,8 @@ urlpatterns = [
     path(
         "delete_comment/<pk>", views.DeleteCommentView.as_view(), name="delete_comment"
     ),
+    path("invite/", views.CreateInviteView.as_view(), name="create_invite"),
+    path("invite_created/<email>", views.invite_created, name="invite_created"),
     path("discuss/<pk>", views.discuss_post_view, name="discuss"),
+    path("auth/register/<token>", views.RegisterView.as_view(), name="register"),
 ]

@@ -172,6 +172,8 @@ SESSION_COOKIE_SECURE = True
 django_heroku.settings(locals())
 
 # Mail
+DEFAULT_FROM_EMAIL = "noreply@mlpit.net"
+
 if DEBUG:
     EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
     EMAIL_FILE_PATH = str(BASE_DIR.joinpath("sent_emails"))
@@ -183,6 +185,5 @@ else:
     EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
-    DEFAULT_FROM_EMAIL = "noreply@mlpit.net"
 
 PASSWORD_RESET_TIMEOUT = 30 * 60
