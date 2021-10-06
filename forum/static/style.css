@@ -1,5 +1,6 @@
 body {
 	font-family: monospace;
+	padding-bottom: 50px;
 }
 
 .user_action > a {
@@ -73,4 +74,15 @@ body {
 
 #password_reset_link {
 	margin-top: 15px;
+}
+
+#footer {
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background: white;
+	font-weight: 600;
 }

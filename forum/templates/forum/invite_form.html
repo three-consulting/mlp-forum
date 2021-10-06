@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Know someone who could enjoy Master League Pitching? Invite them by email.</p>
+
+<form method="post">{% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input class="submit_button" type="submit" value="Submit">
+</form>
+
+{% endblock %}
