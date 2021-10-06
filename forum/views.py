@@ -118,7 +118,6 @@ def invite_created(request, email):
 
 class RegisterView(CreateView):
     template_name = "registration/register.html"
-    success_url = "/"
     form_class = UserRegisterForm
     success_message = "Your profile was created successfully"
 
@@ -138,3 +137,7 @@ class RegisterView(CreateView):
         context = super().get_context_data(**kwargs)
         context["email"] = self.email
         return context
+
+    def get_success_url(self):
+        Invite.objects.filter(email=self.email).update(valid=False)
+        return "/"
