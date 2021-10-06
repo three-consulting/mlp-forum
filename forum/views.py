@@ -17,7 +17,7 @@ class Index(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['user'] = self.request.user
+        context["user"] = self.request.user
         return context
 
 
@@ -46,12 +46,8 @@ class DeletePostView(LoginRequiredMixin, DeleteView):
 def discuss_post_view(request, pk):
     post = get_object_or_404(Post, pk=pk)
     comments = Comment.objects.filter(parent=post)
-    context = {
-        'post': post,
-        'comments': comments,
-        'user': request.user
-    }
-    template = loader.get_template('forum/discuss_post.html')
+    context = {"post": post, "comments": comments, "user": request.user}
+    template = loader.get_template("forum/discuss_post.html")
     return HttpResponse(template.render(context, request))
 
 
@@ -62,14 +58,13 @@ class CreateCommentView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         form.instance.updated_by = self.request.user
-        form.instance.parent = get_object_or_404(
-            Post, pk=self.kwargs.get('post_pk'))
+        form.instance.parent = get_object_or_404(Post, pk=self.kwargs.get("post_pk"))
         return super().form_valid(form)
 
 
 class UpdateCommentView(UpdateView):
     model = Comment
-    fields = ['content']
+    fields = ["content"]
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
@@ -90,7 +85,7 @@ class DeleteCommentView(LoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         post = self.object.parent
-        return reverse('discuss', kwargs={'pk': post.pk})
+        return reverse("discuss", kwargs={"pk": post.pk})
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
