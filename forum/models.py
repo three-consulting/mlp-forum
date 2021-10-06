@@ -9,9 +9,11 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='post_created_by')
+        User, on_delete=models.CASCADE, related_name="post_created_by"
+    )
     updated_by = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='post_updated_by')
+        User, on_delete=models.CASCADE, related_name="post_updated_by"
+    )
 
     class Meta:
         ordering = ["-created_at"]
@@ -22,19 +24,22 @@ class Post(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
-    edited = models.BooleanField(default='False')
+    edited = models.BooleanField(default="False")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='comment_created_by')
+        User, on_delete=models.CASCADE, related_name="comment_created_by"
+    )
     updated_by = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='comment_updated_by')
+        User, on_delete=models.CASCADE, related_name="comment_updated_by"
+    )
     parent = models.ForeignKey(
-        Post, on_delete=models.CASCADE, related_name='comment_parent')
+        Post, on_delete=models.CASCADE, related_name="comment_parent"
+    )
 
     def get_absolute_url(self):
         pk = self.parent.pk
-        return reverse('discuss', args=[pk])
+        return reverse("discuss", args=[pk])
 
     class Meta:
         ordering = ["-created_at"]

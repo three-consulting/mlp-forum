@@ -26,9 +26,10 @@ body {
 	border-width: 1px;
 	padding-left: 10px;
 	margin-bottom: 30px;
+	max-width: 800px;
 }
 
-.block_footer{
+.smalltext{
 	font-size: 12px;
 	font-weight: 600;
 }
@@ -68,4 +69,8 @@ body {
 
 .submit_button {
 	margin-top: 20px;
+}
+
+#password_reset_link {
+	margin-top: 15px;
 }

@@ -8,11 +8,11 @@
     {% for post in object_list %}
         <li>
             <a href="{{ post.url }}"><h3 class="post_link">{{ post.title }}</h3></a>
-            <div class="block_footer">
+            <div class="smalltext">
                 By {{ post.created_by.username }} {{ post.created_at|naturaltime }}
-                - <a href="discuss/{{ post.pk }}">Discuss{% if post.comment_parent.count > 0 %} ({{ post.comment_parent.count }}){% endif %}</a>
+                - <a href="{% url 'discuss' pk=post.pk %}">Discuss{% if post.comment_parent.count > 0 %} ({{ post.comment_parent.count }}){% endif %}</a>
                 {% if user.id == post.created_by.id or user.is_staff %}
-                    - <a href="delete_post/{{ post.pk }}">Delete</a>
+                    - <a href="{% url 'delete_post' pk=post.pk %}">Delete</a>
                 {% endif %}
             </div>
         </li>
