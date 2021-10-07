@@ -15,12 +15,8 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     url = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
     created_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="post_created_by"
-    )
-    updated_by = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="post_updated_by"
     )
 
     class Meta:
@@ -53,7 +49,7 @@ class Comment(models.Model):
         ordering = ["-created_at"]
 
     def __str__(self):
-        return self.title
+        return self.content
 
 
 class Invite(models.Model):
