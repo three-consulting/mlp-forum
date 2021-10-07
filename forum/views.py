@@ -10,6 +10,7 @@ from django.urls import reverse
 from django.utils import timezone
 import urllib.parse
 from .forms import UserRegisterForm
+from django.template.response import TemplateResponse
 
 
 class Index(ListView):
@@ -103,17 +104,17 @@ class CreateInviteView(LoginRequiredMixin, CreateView):
 
 
 def discuss_post_view(request, pk):
+    template = "forum/discuss_post.html"
     post = get_object_or_404(Post, pk=pk)
     comments = Comment.objects.filter(parent=post)
     context = {"post": post, "comments": comments, "user": request.user}
-    template = loader.get_template("forum/discuss_post.html")
-    return HttpResponse(template.render(context, request))
+    return TemplateResponse(request, template, context)
 
 
 def invite_created(request, email):
-    template = loader.get_template("forum/invite_created.html")
+    template = "forum/invite_created.html"
     context = {"email": urllib.parse.unquote(email)}
-    return HttpResponse(template.render(context, request))
+    return TemplateResponse(request, template, context)
 
 
 class RegisterView(CreateView):

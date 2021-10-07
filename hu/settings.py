@@ -87,7 +87,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -169,8 +168,6 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
-django_heroku.settings(locals())
-
 # Mail
 DEFAULT_FROM_EMAIL = "noreply@mlpit.net"
 
@@ -188,4 +185,7 @@ else:
 
 PASSWORD_RESET_TIMEOUT = 30 * 60
 
-CSRF_FAILURE_VIEW ='forum.views.csrf_failure'
+CSRF_FAILURE_VIEW = "forum.views.csrf_failure"
+
+if not DEBUG:
+    django_heroku.settings(locals())
