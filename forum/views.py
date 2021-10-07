@@ -5,7 +5,7 @@ from django.views.generic import CreateView, ListView, DeleteView, UpdateView
 from forum.models import Post, Comment, Invite
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.utils import timezone
 import urllib.parse
@@ -141,3 +141,11 @@ class RegisterView(CreateView):
     def get_success_url(self):
         Invite.objects.filter(email=self.email).update(valid=False)
         return "/"
+
+
+def csrf_failure(request, reason=""):
+    # Workaround for Cloudflare's bug with browser checks.
+    if request.path.startswith("/auth/") and request.method == "POST":
+        return redirect(request.path)
+    else:
+        raise PermissionDenied
