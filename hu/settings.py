@@ -187,3 +187,5 @@ else:
     EMAIL_USE_TLS = True
 
 PASSWORD_RESET_TIMEOUT = 30 * 60
+
+CSRF_FAILURE_VIEW ='forum.views.csrf_failure'
