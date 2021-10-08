@@ -25,7 +25,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if "HU_DJANGO_PROD" in os.environ:
     SECRET_KEY = os.getenv("HU_DJANGO_SECRET")
     DEBUG = False
-    ALLOWED_HOSTS = ["mlpit.net"]
     SECURE_SSL_REDIRECT = True
 else:
     SECRET_KEY = "secret"
@@ -192,6 +191,7 @@ RATELIMIT_VIEW = "forum.views.ratelimit"
 
 if not DEBUG:
     django_heroku.settings(locals())
+    ALLOWED_HOSTS = ["mlpit.net"]
 
 
 def get_cache():
