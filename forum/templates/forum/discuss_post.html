@@ -19,7 +19,7 @@
                     (edited by {{ comment.updated_by }} {{ comment.updated_at|naturaltime }})
             {% endif %}
         </div>
-        {{ comment.content|linebreaks }}
+        {{ comment.content|linebreaks|urlize }}
         <div class="smalltext">
             {% if user.id == comment.created_by.id or user.is_staff %}
                 <a href="{% url 'edit_comment' pk=comment.pk %}">Edit</a> -
@@ -28,6 +28,5 @@
         </div>
     </div>
 {% endfor %}
-</li>
 
 {% endblock %}
