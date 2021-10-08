@@ -1,4 +1,4 @@
-# Basic set up for three package managers
+# Basic set up for pip
 
 version: 2
 updates:
