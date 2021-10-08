@@ -11,6 +11,7 @@ from django.utils import timezone
 import urllib.parse
 from .forms import UserRegisterForm
 from django.template.response import TemplateResponse
+from django.contrib import messages
 
 
 class Index(ListView):
@@ -150,3 +151,11 @@ def csrf_failure(request, reason=""):
         return redirect(request.path)
     else:
         raise PermissionDenied
+
+
+def ratelimit(request, exception):
+    return HttpResponse(
+        'You are doing that too much, please try again in a bit. <br><a href="%s">Go back</a>'
+        % request.path,
+        status=429,
+    )
