@@ -38,12 +38,15 @@
     <div id="content">
         {% block content %}{% endblock %}
     </div>
-    {% if user.username %}
         <div div id="footer">
-            <a href="/invite">
-                Invite a friend
-            </a>
+            <span class="footer_action">
+                <a href="https://t.me/mlpit_updates">Subscribe on Telegram</a>
+            </span>
+            {% if user.username %}
+                <span class="footer_action">
+                    <a href="/invite">Invite a friend</a>
+                </span>
+            {% endif %}
         </div>
-    {% endif %}
 </body>
 </html>
