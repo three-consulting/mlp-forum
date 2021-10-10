@@ -236,3 +236,8 @@ def get_cache():
 
 
 CACHES = get_cache()
+
+if os.getenv("TELEGRAM_CHANNEL_ID"):
+    TELEGRAM_CHANNEL_ID = os.getenv("TELEGRAM_CHANNEL_ID")
+if os.getenv("TELEGRAM_BOT_TOKEN"):
+    TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
