@@ -86,3 +86,8 @@ body {
 	background: white;
 	font-weight: 600;
 }
+
+.footer_action {
+	margin-left: 1em;
+	margin-right: 1em;
+}
