@@ -4,7 +4,7 @@ autopep8==1.5.7
 black==21.9b0
 certifi==2021.10.8
 charset-normalizer==2.0.6
-click==8.0.1
+click==8.0.3
 curlylint==0.13.0
 dj-database-url==0.5.0
 Django==3.2.8
