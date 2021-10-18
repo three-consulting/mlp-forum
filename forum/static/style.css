@@ -1,3 +1,45 @@
+@media(prefers-color-scheme: light){
+	body {
+		color: #888;
+		background: white;
+	}
+	.user_action > a {
+		color: white;
+	}
+	.smalltext{
+		color: black;
+	}
+	#footer {
+		background: white;
+	}
+	a {
+		color: blue
+	}
+}
+
+@media(prefers-color-scheme: dark){
+	body {
+		color: #888;
+		background: black;
+	}
+	.user_action > a {
+		color: white;
+	}
+	.smalltext{
+		color: white;
+	}
+	#footer {
+		background: darkslategray;
+	}
+	a {
+		color: lightsteelblue;
+	}
+	#logo_container {
+		border: 1px solid #888;
+		border-radius:5px;
+	}
+}
+
 body {
 	font-family: monospace;
 	padding-bottom: 50px;
@@ -6,7 +48,6 @@ body {
 .user_action > a {
 	text-decoration: none;
 	font-weight: 600;
-	color: black;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 11px;
 }
@@ -83,7 +124,6 @@ body {
 	width: 100%;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	background: white;
 	font-weight: 600;
 }
 
