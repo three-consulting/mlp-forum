@@ -23,10 +23,10 @@
 		background: black;
 	}
 	.user_action > a {
-		color: white;
+		color: #ddd;
 	}
 	.smalltext{
-		color: white;
+		color: #ddd;
 	}
 	#footer {
 		background: darkslategray;
@@ -37,6 +37,10 @@
 	#logo_container {
 		border: 1px solid #888;
 		border-radius:5px;
+	}
+	textarea {
+		color: #ddd;
+		background: #111;
 	}
 }
 
