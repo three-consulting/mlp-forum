@@ -19,8 +19,8 @@
 
 @media(prefers-color-scheme: dark){
 	body {
-		color: #888;
-		background: black;
+		color: #cdcdcd;
+		background: #131516;
 	}
 	.user_action > a {
 		color: #ddd;
@@ -32,7 +32,10 @@
 		background: darkslategray;
 	}
 	a {
-		color: lightsteelblue;
+		color: #57b1ff;
+	}
+	a:visited {
+		color: #be31be ;
 	}
 	#logo_container {
 		border: 1px solid #888;
