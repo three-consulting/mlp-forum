@@ -24,7 +24,7 @@ regex==2021.10.8
 requests==2.26.0
 sqlparse==0.4.2
 toml==0.10.2
-tomli==1.2.1
+tomli==1.2.2
 typing-extensions==3.10.0.2
 urllib3==1.26.7
 whitenoise==5.3.0
