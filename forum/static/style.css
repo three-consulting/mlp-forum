@@ -1,3 +1,52 @@
+@media(prefers-color-scheme: light){
+	body {
+		color: #888;
+		background: white;
+	}
+	.user_action > a {
+		color: white;
+	}
+	.smalltext{
+		color: black;
+	}
+	#footer {
+		background: white;
+	}
+	a {
+		color: blue
+	}
+}
+
+@media(prefers-color-scheme: dark){
+	body {
+		color: #cdcdcd;
+		background: #131516;
+	}
+	.user_action > a {
+		color: #ddd;
+	}
+	.smalltext{
+		color: #ddd;
+	}
+	#footer {
+		background: darkslategray;
+	}
+	a {
+		color: #57b1ff;
+	}
+	a:visited {
+		color: #be31be ;
+	}
+	#logo_container {
+		border: 1px solid #888;
+		border-radius:5px;
+	}
+	textarea {
+		color: #ddd;
+		background: #111;
+	}
+}
+
 body {
 	font-family: monospace;
 	padding-bottom: 50px;
@@ -6,7 +55,6 @@ body {
 .user_action > a {
 	text-decoration: none;
 	font-weight: 600;
-	color: black;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 11px;
 }
@@ -83,7 +131,6 @@ body {
 	width: 100%;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	background: white;
 	font-weight: 600;
 }
 
