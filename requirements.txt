@@ -6,7 +6,7 @@ charset-normalizer==2.0.8
 click==8.0.3
 curlylint==0.13.0
 dj-database-url==0.5.0
-Django==3.2.9
+Django==4.1.7
 django-csp==3.7
 django-heroku==0.3.1
 django-permissions-policy==4.5.0
